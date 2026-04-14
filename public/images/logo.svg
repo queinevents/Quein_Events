@@ -1,0 +1,16 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Crown element (brand identity) -->
+  <g id="crown">
+    <path d="M30 15 L35 25 L40 15 L45 25 L50 15 L45 30 L35 30 Z" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"/>
+    <circle cx="30" cy="15" r="2" fill="#F59E0B"/>
+    <circle cx="40" cy="15" r="2" fill="#F59E0B"/>
+    <circle cx="50" cy="15" r="2" fill="#F59E0B"/>
+  </g>
+  
+  <!-- Company name -->
+  <text x="60" y="28" font-family="serif" font-size="20" font-weight="700" fill="#FFFFFF">QUEIN</text>
+  <text x="60" y="42" font-family="sans-serif" font-size="9" font-weight="300" fill="#A0A0A0" letter-spacing="2">PRIVATE EVENTS & EXHIBITIONS</text>
+  
+  <!-- Decorative accent line -->
+  <line x1="60" y1="46" x2="195" y2="46" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
+</svg>

@@ -1,0 +1,28 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Decorative Lines</title>
+  <desc>Floating lines with purple/blue/gold gradients and glow effects</desc>
+  
+  <defs>
+    <!-- Purple to Blue gradient -->
+    <linearGradient id="purple-blue-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Blue to Gold gradient -->
+    <linearGradient id="blue-gold-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow filter -->
+    <filter id="line-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
+    </filter>
+  </defs>
+  
+  <!-- Decorative lines -->
+  <line x1="20" y1="50" x2="180" y2="50" stroke="url(#purple-blue-gradient)" stroke-width="2" filter="url(#line-glow)" opacity="0.6"/>
+  <line x1="40" y1="100" x2="160" y2="100" stroke="url(#blue-gold-gradient)" stroke-width="2" filter="url(#line-glow)" opacity="0.6"/>
+  <line x1="30" y1="150" x2="170" y2="150" stroke="url(#purple-blue-gradient)" stroke-width="2" filter="url(#line-glow)" opacity="0.6"/>
+</svg>

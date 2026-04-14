@@ -1,0 +1,9 @@
+export { FadeIn } from './FadeIn';
+export { AnimatedSection } from './AnimatedSection';
+export { CounterAnimation } from './CounterAnimation';
+export { ParallaxSection } from './ParallaxSection';
+export { StaggeredCards } from './StaggeredCards';
+export { ImageZoom } from './ImageZoom';
+export { TextReveal } from './TextReveal';
+export { GradientBackground } from './GradientBackground';
+export { VideoBackground } from './VideoBackground';

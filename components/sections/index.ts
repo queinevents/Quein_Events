@@ -1,0 +1,13 @@
+export { default as HeroSection } from './HeroSection';
+export { default as StatisticsSection } from './StatisticsSection';
+export { default as ServicesSection } from './ServicesSection';
+export { ServicesDetailSection } from './ServicesDetailSection';
+export { default as EventCategoriesSection } from './EventCategoriesSection';
+export { default as ExpertiseSection } from './ExpertiseSection';
+export { default as PortfolioSection } from './PortfolioSection';
+// export { AboutSection } from './AboutSection';
+export { default as TeamSection } from './TeamSection';
+// export { TestimonialsSection } from './TestimonialsSection';
+export { EventGallerySection } from './EventGallerySection';
+export { NewsletterSection } from './NewsletterSection';
+export { default as ContactSection } from './ContactSection';
