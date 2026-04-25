@@ -63,7 +63,7 @@ export default function VisionMissionSection({ className = '' }: VisionMissionSe
                 <div 
                   className="w-full h-full bg-cover bg-center"
                   style={{
-                    backgroundImage: 'url(https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80)'
+                    backgroundImage: 'url(/images/gallery/conference-01.jpg)'
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -105,7 +105,7 @@ export default function VisionMissionSection({ className = '' }: VisionMissionSe
                 <div 
                   className="w-full h-full bg-cover bg-center"
                   style={{
-                    backgroundImage: 'url(https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80)'
+                    backgroundImage: 'url(/images/gallery/gala-01.jpg)'
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

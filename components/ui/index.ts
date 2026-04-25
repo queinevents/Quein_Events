@@ -35,3 +35,6 @@ export type { TestimonialCardProps } from "./TestimonialCard";
 export { NewsletterForm } from "./NewsletterForm";
 
 export { FlipCard } from "./FlipCard";
+
+export { WhatsAppButton } from "./WhatsAppButton";
+export type { WhatsAppButtonProps } from "./WhatsAppButton";

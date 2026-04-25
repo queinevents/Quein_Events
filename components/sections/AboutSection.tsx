@@ -38,7 +38,7 @@ export function AboutSection({ className }: AboutSectionProps) {
                 <div 
                   className="w-full h-full bg-cover bg-center"
                   style={{
-                    backgroundImage: 'url(https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80)'
+                    backgroundImage: 'url(/images/about/about.jpg)'
                   }}
                 />
                 {/* Overlay */}

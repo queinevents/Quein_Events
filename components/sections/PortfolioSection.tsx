@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FadeIn } from '@/components/animations';
-import { PORTFOLIO_ITEMS } from '@/lib/constants';
+import { GALLERY_ITEMS } from '@/lib/constants';
 
 interface PortfolioSectionProps {
   className?: string;
@@ -43,7 +43,7 @@ export default function PortfolioSection({ className = '' }: PortfolioSectionPro
         {/* Masonry Grid - 2 rows, 4 columns */}
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[240px]">
-            {PORTFOLIO_ITEMS.slice(0, 8).map((item, index) => {
+            {GALLERY_ITEMS.slice(0, 8).map((item, index) => {
               // Define grid spans for masonry layout
               const gridSpans = [
                 'col-span-1 row-span-1', // 0 - small
@@ -99,6 +99,11 @@ export default function PortfolioSection({ className = '' }: PortfolioSectionPro
                     <p className="text-white/80 text-sm capitalize">
                       {item.category}
                     </p>
+                    {item.description && (
+                      <p className="text-white/70 text-xs text-center mt-1">
+                        {item.description}
+                      </p>
+                    )}
                   </div>
                 </motion.div>
               );

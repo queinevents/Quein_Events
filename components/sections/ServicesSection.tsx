@@ -4,12 +4,12 @@ import { FadeIn } from '@/components/animations';
 import { SERVICES } from '@/lib/constants';
 
 export default function ServicesSection() {
-  // Service images from Unsplash
+  // Service images from local assets
   const serviceImages = {
-    'private-events': 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80',
-    'exhibitions': 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80',
-    'conferences': 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&q=80',
-    'marriage-events': 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80',
+    'private-events': '/images/services/private-events.jpg',
+    'exhibitions': '/images/services/exhibitions.jpg',
+    'conferences': '/images/services/conferences.jpg',
+    'marriage-events': '/images/services/marriage-events.jpg',
   };
 
   return (
@@ -17,24 +17,44 @@ export default function ServicesSection() {
       id="services"
       className="relative py-20 md:py-28 overflow-hidden bg-[#0A0A0A]"
     >
+      {/* Animated Background Orbs */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary-gold/5 blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-primary-blue/5 blur-3xl animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        {/* Elegant Section Heading */}
+        {/* Artistic Section Heading */}
         <FadeIn delay={0} duration={600}>
-          <div className="text-center mb-16">
-            <p className="text-primary-gold text-sm font-medium tracking-wider uppercase mb-3">
-              What We Do
-            </p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-              Our Perfect <span className="text-primary-gold">Services</span>
-            </h2>
-            {/* Decorative dots and line */}
-            <div className="flex items-center justify-center gap-2 mt-4">
-              <div className="flex gap-1">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary-gold" />
-                <div className="w-1.5 h-1.5 rounded-full bg-primary-gold" />
-                <div className="w-1.5 h-1.5 rounded-full bg-primary-gold" />
+          <div className="relative text-center mb-20">
+            {/* Large Background Text */}
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0">
+              <h2 
+                className="text-[100px] md:text-[140px] lg:text-[200px] font-black leading-none select-none whitespace-nowrap"
+                style={{
+                  WebkitTextStroke: '2px rgba(245, 158, 11, 0.08)',
+                  color: 'transparent',
+                  letterSpacing: '0.05em',
+                }}
+              >
+                SERVICES
+              </h2>
+            </div>
+
+            {/* Foreground Content */}
+            <div className="relative z-10 pt-16 md:pt-20">
+              <p className="text-primary-gold text-sm font-bold tracking-[0.3em] uppercase mb-4">
+                What We Do
+              </p>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+                Our Perfect <span className="text-primary-gold">Services</span>
+              </h2>
+              {/* Decorative line */}
+              <div className="flex items-center justify-center gap-2 mt-6">
+                <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-primary-gold to-transparent" />
+                <div className="w-2 h-2 rounded-full bg-primary-gold" />
+                <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-primary-gold to-transparent" />
               </div>
-              <div className="w-20 h-0.5 bg-primary-gold" />
             </div>
           </div>
         </FadeIn>

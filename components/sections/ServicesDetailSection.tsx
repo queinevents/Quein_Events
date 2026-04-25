@@ -22,12 +22,12 @@ interface ServicesDetailSectionProps {
  * @param className - Additional CSS classes
  */
 export function ServicesDetailSection({ className }: ServicesDetailSectionProps) {
-  // Free images from Unsplash for each service
+  // Service images from local assets
   const serviceImages = {
-    'private-events': 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80',
-    'exhibitions': 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80',
-    'conferences': 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&q=80',
-    'marriage-events': 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80',
+    'private-events': '/images/services/private-events.jpg',
+    'exhibitions': '/images/services/exhibitions.jpg',
+    'conferences': '/images/services/conferences.jpg',
+    'marriage-events': '/images/services/marriage-events.jpg',
   };
 
   return (

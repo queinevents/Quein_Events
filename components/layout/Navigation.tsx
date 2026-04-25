@@ -157,14 +157,14 @@ export default function Navigation({ className }: NavigationProps) {
               aria-label="Quein Events - Go to homepage"
             >
               <Image
-                src="/images/logo.svg"
+                src="/images/logo.png"
                 alt="Quein Events logo"
-                width={40}
                 height={40}
+                width={0}
+                style={{ width: '100%',}}
                 className="h-8 w-8 sm:h-10 sm:w-10"
                 priority
               />
-              <span>{COMPANY_INFO.name.split(' ')[0]}</span>
             </a>
           </div>
 
@@ -232,7 +232,7 @@ export default function Navigation({ className }: NavigationProps) {
         id="mobile-menu"
         ref={mobileMenuRef}
         className={cn(
-          'md:hidden fixed inset-y-0 right-0 w-72 sm:w-80 bg-[#050505] shadow-2xl transform transition-transform duration-300 ease-in-out z-50',
+          'md:hidden fixed inset-y-0 right-0 bg-[#000000]  w-72 sm:w-80 bg-[#050505] shadow-2xl transform transition-transform duration-300 ease-in-out z-50',
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         )}
         aria-hidden={!isMobileMenuOpen}

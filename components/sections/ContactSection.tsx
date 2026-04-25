@@ -25,19 +25,34 @@ export default function ContactSection() {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     
-    // Simulate form submission (client-side confirmation only)
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    console.log('Form data:', data);
-    
-    setIsSubmitting(false);
-    setShowSuccess(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
+
+      setShowSuccess(true);
       reset();
-      setShowSuccess(false);
-    }, 3000);
+
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 5000);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert(error instanceof Error ? error.message : 'Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const eventTypeOptions = [
@@ -70,39 +85,68 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative py-16 md:py-20 bg-[#0A0A0A] overflow-hidden"
+      className="relative py-20 md:py-28 bg-[#0A0A0A] overflow-hidden"
     >
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <div 
-          className="w-full h-full bg-cover bg-center opacity-10"
-          style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1200&q=80)'
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/90 via-[#0A0A0A]/95 to-[#0A0A0A]" />
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full bg-primary-gold/5 blur-3xl animate-pulse" style={{ animationDuration: '10s' }} />
+        <div className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-primary-blue/5 blur-3xl animate-pulse" style={{ animationDuration: '12s', animationDelay: '3s' }} />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        {/* Section Heading */}
+        {/* Artistic Section Heading */}
         <FadeIn delay={0} duration={600}>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary text-center mb-4 md:mb-6">
-            Get In Touch
-          </h2>
-          <p className="text-text-secondary text-base md:text-lg text-center max-w-2xl mx-auto mb-12 md:mb-16 px-2">
-            Ready to create an unforgettable event? Contact us today to discuss your vision
-          </p>
+          <div className="relative text-center mb-20">
+            {/* Large Background Text */}
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0">
+              <h2 
+                className="text-[100px] md:text-[140px] lg:text-[180px] font-black leading-none select-none whitespace-nowrap"
+                style={{
+                  WebkitTextStroke: '2px rgba(245, 158, 11, 0.08)',
+                  color: 'transparent',
+                  letterSpacing: '0.05em',
+                }}
+              >
+                CONTACT
+              </h2>
+            </div>
+
+            {/* Foreground Content */}
+            <div className="relative z-10 pt-16 md:pt-20">
+              <p className="text-primary-gold text-sm font-bold tracking-[0.3em] uppercase mb-4">
+                Let's Connect
+              </p>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                Get In <span className="text-primary-gold">Touch</span>
+              </h2>
+              <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
+                Ready to create an unforgettable event? Contact us today to discuss your vision
+              </p>
+              {/* Decorative line */}
+              <div className="flex items-center justify-center gap-2 mt-6">
+                <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-primary-gold to-transparent" />
+                <div className="w-2 h-2 rounded-full bg-primary-gold" />
+                <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-primary-gold to-transparent" />
+              </div>
+            </div>
+          </div>
         </FadeIn>
 
         {/* Contact Form and Info Container */}
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-          {/* Contact Form */}
+          {/* Contact Form with Artistic Container */}
           <FadeIn delay={100} duration={600}>
-            <div className="bg-[#1A1A1A] border border-[#2A2A2A] p-6 md:p-8 rounded-lg">
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-6">
-                Send Us a Message
-              </h3>
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 md:space-y-6">
+            <div className="relative">
+              {/* Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-gold/10 to-primary-blue/10 rounded-3xl blur-xl opacity-50" />
+              
+              {/* Form Container */}
+              <div className="relative bg-gradient-to-br from-[#1A1A1A] to-[#0F0F0F] border border-white/10 p-6 md:p-8 rounded-3xl">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                  <span className="w-1.5 h-6 bg-primary-gold rounded-full" />
+                  Send Us a Message
+                </h3>
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 md:space-y-5">
                 {/* Success Message */}
                 {showSuccess && (
                   <div className="bg-green-500/10 border border-green-500/50 rounded-lg p-4 text-green-400">
@@ -214,109 +258,124 @@ export default function ContactSection() {
                 </Button>
               </form>
             </div>
+          </div>
           </FadeIn>
 
-          {/* Contact Information */}
+          {/* Contact Information with Artistic Cards */}
           <FadeIn delay={200} duration={600}>
-            <div className="space-y-6 md:space-y-8">
-              <h3 className="text-xl md:text-2xl font-semibold text-text-primary mb-6">
+            <div className="space-y-5">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                <span className="w-1.5 h-6 bg-primary-blue rounded-full" />
                 Contact Information
               </h3>
 
-              {/* Email */}
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-[#8B5CF6]/10 rounded-lg flex items-center justify-center flex-shrink-0 purple-glow">
-                  <svg
-                    className="w-6 h-6 text-[#8B5CF6]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-1">
-                    Email
-                  </h4>
-                  <a
-                    href={`mailto:${CONTACT_INFO.email}`}
-                    className="text-[#A0A0A0] hover:text-[#8B5CF6] transition-colors duration-300"
-                  >
+              {/* Email Card */}
+              <div className="group relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-gold/20 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                <div className="relative flex items-start gap-3 p-5 rounded-2xl bg-gradient-to-br from-[#1A1A1A] to-[#0F0F0F] border border-white/10 hover:border-primary-gold/50 transition-all duration-300">
+                  <div className="w-11 h-11 bg-primary-gold/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <svg
+                      className="w-5 h-5 text-primary-gold"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-base font-bold text-white mb-1.5 group-hover:text-primary-gold transition-colors duration-300">
+                      Email
+                    </h4>
+                    <a
+                      href={`mailto:${CONTACT_INFO.email}`}
+                      className="text-white/70 hover:text-primary-gold transition-colors duration-300 text-sm"
+                    >
                     {CONTACT_INFO.email}
                   </a>
                 </div>
               </div>
+            </div>
 
-              {/* Phone */}
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-[#3B82F6]/10 rounded-lg flex items-center justify-center flex-shrink-0 blue-glow">
-                  <svg
-                    className="w-6 h-6 text-[#3B82F6]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-1">
-                    Phone
-                  </h4>
-                  <a
-                    href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}
-                    className="text-[#A0A0A0] hover:text-[#3B82F6] transition-colors duration-300"
-                  >
+              {/* Phone Card */}
+              <div className="group relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/20 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                <div className="relative flex items-start gap-3 p-5 rounded-2xl bg-gradient-to-br from-[#1A1A1A] to-[#0F0F0F] border border-white/10 hover:border-primary-blue/50 transition-all duration-300">
+                  <div className="w-11 h-11 bg-primary-blue/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <svg
+                      className="w-5 h-5 text-primary-blue"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-base font-bold text-white mb-1.5 group-hover:text-primary-blue transition-colors duration-300">
+                      Phone
+                    </h4>
+                    <a
+                      href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}
+                      className="text-white/70 hover:text-primary-blue transition-colors duration-300 text-sm"
+                    >
                     {CONTACT_INFO.phone}
                   </a>
                 </div>
               </div>
+            </div>
 
-              {/* Address */}
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-[#F59E0B]/10 rounded-lg flex items-center justify-center flex-shrink-0 gold-glow">
-                  <svg
-                    className="w-6 h-6 text-[#F59E0B]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
+              {/* Address Card */}
+              <div className="group relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-gold/20 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                <div className="relative flex items-start gap-3 p-5 rounded-2xl bg-gradient-to-br from-[#1A1A1A] to-[#0F0F0F] border border-white/10 hover:border-primary-gold/50 transition-all duration-300">
+                  <div className="w-11 h-11 bg-primary-gold/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <svg
+                      className="w-5 h-5 text-primary-gold"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-base font-bold text-white mb-1.5 group-hover:text-primary-gold transition-colors duration-300">
+                      Address
+                    </h4>
+                    <p className="text-white/70 text-sm">
+                      {CONTACT_INFO.address}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-1">
-                    Address
-                  </h4>
-                  <p className="text-[#A0A0A0]">
-                    {CONTACT_INFO.address}
-                  </p>
-                </div>
+              </div>
+
+              {/* Decorative Element */}
+              <div className="relative mt-6 p-5 rounded-2xl bg-gradient-to-br from-primary-gold/5 to-primary-blue/5 border border-white/5">
+                <p className="text-white/60 text-xs text-center italic">
+                  "We're here to make your event extraordinary. Reach out and let's start planning!"
+                </p>
               </div>
             </div>
           </FadeIn>

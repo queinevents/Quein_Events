@@ -80,6 +80,7 @@ export interface GalleryItem {
   date: string;
   category: string;
   imageUrl: string;
+  imageAlt: string;
   description?: string;
 }
 

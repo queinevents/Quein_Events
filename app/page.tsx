@@ -112,9 +112,9 @@ export default function Home() {
         <section id="portfolio">
           <PortfolioSection />
         </section>
-        <section id="statistics">
+        {/* <section id="statistics">
           <StatisticsSection />
-        </section>
+        </section> */}
         <section id="testimonials">
           <TestimonialsSection />
         </section>
@@ -122,9 +122,9 @@ export default function Home() {
         {/* <section id="team">
           <TeamSection />
         </section> */}
-        <section id="newsletter">
+        {/* <section id="newsletter">
           <NewsletterSection />
-        </section>
+        </section> */}
         <section id="contact">
           <ContactSection />
         </section>

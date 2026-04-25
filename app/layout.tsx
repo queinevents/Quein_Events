@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { PerformanceMonitor } from "@/components/PerformanceMonitor";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { CONTACT_INFO } from "@/lib/constants";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -29,8 +31,8 @@ export const metadata: Metadata = {
   creator: "Quein Conference and Event Organization WLL",
   publisher: "Quein Conference and Event Organization WLL",
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: "/images/fav.png",
+    apple: "/images/fav.png",
   },
   openGraph: {
     title: "Quein Conference and Event Organization WLL | Where Every Occasion Finds Its Grandeur",
@@ -145,6 +147,10 @@ export default function RootLayout({
       <body className={`${inter.className} bg-background-primary antialiased`}>
         <PerformanceMonitor />
         {children}
+        <WhatsAppButton 
+          phoneNumber={CONTACT_INFO.whatsapp}
+          message="Hello! I'm interested in your event services."
+        />
       </body>
     </html>
   );
