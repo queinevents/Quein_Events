@@ -78,8 +78,8 @@ export function TestimonialCard({
       {/* Quote Icon */}
       <motion.div
         className="mb-6 text-primary-purple/20"
-        initial={shouldReduceMotion ? false : { scale: 0, rotate: -180 }}
-        animate={shouldReduceMotion ? false : { scale: 1, rotate: 0 }}
+        initial={shouldReduceMotion ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
+        animate={shouldReduceMotion ? { scale: 1, rotate: 0 } : { scale: 1, rotate: 0 }}
         transition={{
           type: 'spring',
           stiffness: 200,
@@ -121,8 +121,8 @@ export function TestimonialCard({
               'w-5 h-5 md:w-6 md:h-6',
               star <= rating ? 'text-primary-gold' : 'text-text-secondary/30'
             )}
-            initial={shouldReduceMotion ? false : { scale: 0, opacity: 0 }}
-            animate={shouldReduceMotion ? false : { scale: 1, opacity: 1 }}
+            initial={shouldReduceMotion ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+            animate={shouldReduceMotion ? { scale: 1, opacity: 1 } : { scale: 1, opacity: 1 }}
             transition={{
               type: 'spring',
               stiffness: 200,

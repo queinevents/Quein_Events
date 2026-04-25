@@ -46,7 +46,7 @@ export default function VisionMissionSection({ className = '' }: VisionMissionSe
             <div>
               <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-8">
                 To transform visions into unforgettable realities by delivering world-class event 
-                management services that celebrate Qatar's cultural richness while meeting 
+                management services that celebrate Qatar&apos;s cultural richness while meeting 
                 international standards of excellence.
               </p>
               
@@ -121,7 +121,7 @@ export default function VisionMissionSection({ className = '' }: VisionMissionSe
             {/* Right: Content */}
             <div className="lg:order-2">
               <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-8">
-                To be Qatar's premier event management company, recognized for our cultural 
+                To be Qatar&apos;s premier event management company, recognized for our cultural 
                 sensitivity, innovative approach, and unwavering commitment to creating occasions 
                 that find their grandeur in every detail.
               </p>
@@ -151,8 +151,8 @@ export default function VisionMissionSection({ className = '' }: VisionMissionSe
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
                     <blockquote className="text-3xl md:text-4xl lg:text-5xl font-light text-white italic leading-relaxed mb-6">
-                      "Where Every Occasion
-                      <span className="block text-primary-gold">Finds Its Grandeur"</span>
+                      &quot;Where Every Occasion
+                      <span className="block text-primary-gold">Finds Its Grandeur&quot;</span>
                     </blockquote>
                     <div className="text-lg text-primary-gold/80 font-medium">
                       — Quein Conference & Event Organization WLL
@@ -259,7 +259,7 @@ export default function VisionMissionSection({ className = '' }: VisionMissionSe
               }}
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary-gold hover:bg-primary-gold/90 text-black font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary-gold/25"
             >
-              Let's Plan Your Event
+              Let&apos;s Plan Your Event
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

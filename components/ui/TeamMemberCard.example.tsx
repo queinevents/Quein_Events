@@ -15,6 +15,7 @@ const basicMember: TeamMember = {
   role: 'Event Director',
   bio: 'Sarah brings 10+ years of experience in orchestrating large-scale events. Her meticulous attention to detail and creative vision ensure every event exceeds expectations.',
   imageUrl: '/images/team/sarah-johnson.jpg',
+  imageAlt: 'Sarah Johnson, Event Director at Quein Events',
   socialLinks: {
     linkedin: 'https://linkedin.com/in/sarahjohnson',
     email: 'sarah@example.com',
@@ -36,6 +37,7 @@ const memberWithoutSocial: TeamMember = {
   role: 'Technical Lead',
   bio: 'Michael is our technical mastermind, specializing in audio, lighting, and AV systems. His expertise ensures flawless technical execution for every event.',
   imageUrl: '/images/team/michael-chen.jpg',
+  imageAlt: 'Michael Chen, Technical Lead at Quein Events',
 };
 
 export function TeamMemberCardWithoutSocial() {
@@ -54,6 +56,7 @@ const teamMembers: TeamMember[] = [
     role: 'Creative Designer',
     bio: 'Emma transforms concepts into stunning visual experiences with her innovative designs.',
     imageUrl: '/images/team/emma-wilson.jpg',
+    imageAlt: 'Emma Wilson, Creative Designer at Quein Events',
     socialLinks: {
       linkedin: 'https://linkedin.com/in/emmawilson',
       email: 'emma@example.com',
@@ -65,6 +68,7 @@ const teamMembers: TeamMember[] = [
     role: 'Operations Manager',
     bio: 'David ensures seamless logistics and operations for all our events.',
     imageUrl: '/images/team/david-martinez.jpg',
+    imageAlt: 'David Martinez, Operations Manager at Quein Events',
     socialLinks: {
       linkedin: 'https://linkedin.com/in/davidmartinez',
       email: 'david@example.com',
@@ -76,6 +80,7 @@ const teamMembers: TeamMember[] = [
     role: 'Client Relations',
     bio: 'Lisa builds strong relationships with clients and ensures their vision comes to life.',
     imageUrl: '/images/team/lisa-anderson.jpg',
+    imageAlt: 'Lisa Anderson, Client Relations at Quein Events',
     socialLinks: {
       linkedin: 'https://linkedin.com/in/lisaanderson',
       email: 'lisa@example.com',
@@ -112,6 +117,7 @@ const memberWithEmailOnly: TeamMember = {
   role: 'Audio Engineer',
   bio: 'Robert specializes in professional sound engineering for events of all sizes.',
   imageUrl: '/images/team/robert-taylor.jpg',
+  imageAlt: 'Robert Taylor, Audio Engineer at Quein Events',
   socialLinks: {
     email: 'robert@example.com',
   },
@@ -132,6 +138,7 @@ const memberWithLinkedInOnly: TeamMember = {
   role: 'Marketing Director',
   bio: 'Jennifer leads our marketing efforts and brand strategy.',
   imageUrl: '/images/team/jennifer-lee.jpg',
+  imageAlt: 'Jennifer Lee, Marketing Director at Quein Events',
   socialLinks: {
     linkedin: 'https://linkedin.com/in/jenniferlee',
   },

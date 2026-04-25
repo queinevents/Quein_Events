@@ -69,7 +69,7 @@ export function TestimonialsSection({ className }: TestimonialsSectionProps) {
                     transition={{ duration: 0.5 }}
                   >
                     <p className="text-white/90 text-lg md:text-xl leading-relaxed mb-8 italic">
-                      "{currentTestimonial.quote}"
+                      &quot;{currentTestimonial.quote}&quot;
                     </p>
 
                     {/* Client Info */}
@@ -122,7 +122,7 @@ export function TestimonialsSection({ className }: TestimonialsSectionProps) {
                 <br />
                 <span className="text-primary-gold">Event Management?</span>
                 <br />
-                Let's Work Together!
+                Let&apos;s Work Together!
               </h2>
 
               {/* Decorative dots and line */}

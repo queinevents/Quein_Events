@@ -37,6 +37,7 @@ export interface EventCategory {
   title: string;
   description: string;
   imageUrl: string;
+  imageAlt: string;
   eventCount: number;
   tags: string[];
   featured?: boolean;
@@ -68,6 +69,7 @@ export interface TeamMember {
   role: string;
   bio: string;
   imageUrl: string;
+  imageAlt: string;
   socialLinks?: {
     linkedin?: string;
     email?: string;

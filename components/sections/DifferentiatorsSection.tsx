@@ -85,7 +85,7 @@ export default function DifferentiatorsSection() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto"
               >
-                Seven compelling reasons why we're Qatar's most trusted event management company
+                Seven compelling reasons why we&apos;re Qatar&apos;s most trusted event management company
               </motion.p>
 
               {/* Decorative Line */}

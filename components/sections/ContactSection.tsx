@@ -114,7 +114,7 @@ export default function ContactSection() {
             {/* Foreground Content */}
             <div className="relative z-10 pt-16 md:pt-20">
               <p className="text-primary-gold text-sm font-bold tracking-[0.3em] uppercase mb-4">
-                Let's Connect
+                Let&apos;s Connect
               </p>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
                 Get In <span className="text-primary-gold">Touch</span>
@@ -374,7 +374,7 @@ export default function ContactSection() {
               {/* Decorative Element */}
               <div className="relative mt-6 p-5 rounded-2xl bg-gradient-to-br from-primary-gold/5 to-primary-blue/5 border border-white/5">
                 <p className="text-white/60 text-xs text-center italic">
-                  "We're here to make your event extraordinary. Reach out and let's start planning!"
+                  &quot;We&apos;re here to make your event extraordinary. Reach out and let&apos;s start planning!&quot;
                 </p>
               </div>
             </div>

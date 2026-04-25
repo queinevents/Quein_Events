@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { COMPANY_INFO, CONTACT_INFO } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
@@ -51,9 +52,11 @@ export function Footer({ className }: FooterProps) {
           <div className="lg:col-span-2 space-y-4">
             {/* Full Logo */}
             <div className="mb-6">
-              <img
+              <Image
                 src="/images/full_logo.png"
                 alt="Quein Conference and Event Organization WLL Logo"
+                width={200}
+                height={80}
                 className="h-[20px] md:h-[40px] w-auto object-contain"
               />
             </div>

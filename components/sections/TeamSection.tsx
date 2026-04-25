@@ -42,10 +42,10 @@ export default function TeamSection() {
         {/* Section Heading */}
         <motion.div
           className="text-center mb-12 md:mb-16"
-          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
-          whileInView={shouldReduceMotion ? false : { opacity: 1, y: 0 }}
+          initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
             Meet Our Team
@@ -78,8 +78,8 @@ export default function TeamSection() {
         {/* Optional: Join Our Team CTA */}
         <motion.div
           className="text-center mt-12 md:mt-16"
-          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
-          whileInView={shouldReduceMotion ? false : { opacity: 1, y: 0 }}
+          initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
