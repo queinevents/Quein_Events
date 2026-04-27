@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { ParallaxSection, TextReveal } from '@/components/animations';
 
 interface HeroSectionProps {}
@@ -140,24 +141,26 @@ export default function HeroSection({}: HeroSectionProps) {
           </div> */}
         </motion.div>
 
-        {/* MASSIVE Main Title - Artistic Typography */}
+        {/* MASSIVE Main Title - Logo Display */}
         <div className="relative mb-8 md:mb-10">
-          <TextReveal delay={0.6} stagger={0.12} animation="slide-up">
-            <h1 
-              className="text-7xl font-bold md:text-8xl lg:text-9xl xl:text-[11rem] leading-[0.85] tracking-[-0.02em] select-none relative"
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ delay: 0.6, duration: 1.2, ease: "easeOut" }}
+            className="flex justify-center"
+          >
+            <Image
+              src="/images/logo_light.png"
+              alt="Quein Events - Where Every Occasion Finds Its Grandeur"
+              width={0}
+              height={0}
+              className="w-auto h-20 md:h-20 lg:h-20 xl:h-20 max-w-full object-contain"
               style={{ 
-                fontWeight: '900',
-                background: 'linear-gradient(180deg, #FFFFFF 0%, #F59E0B 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                textShadow: '0 0 80px rgba(245, 158, 11, 0.3)',
-                fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif',
+                filter: 'drop-shadow(0 0 40px rgba(245, 158, 11, 0.3))',
               }}
-            >
-              QUEIN
-            </h1>
-          </TextReveal>
+              priority
+            />
+          </motion.div>
           
           {/* Artistic Underline */}
           <motion.div

@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { NAV_LINKS, COMPANY_INFO } from '@/lib/constants';
+import { NAV_LINKS } from '@/lib/constants';
 
 export interface NavigationProps {
   className?: string;
@@ -157,12 +157,11 @@ export default function Navigation({ className }: NavigationProps) {
               aria-label="Quein Events - Go to homepage"
             >
               <Image
-                src="/images/logo.png"
+                src="/images/logo_creator.png"
                 alt="Quein Events logo"
                 height={40}
-                width={0}
-                style={{ width: '100%',}}
-                className="h-8 w-8 sm:h-10 sm:w-10"
+                width={120}
+                className="h-8 w-auto sm:h-10 sm:w-auto"
                 priority
               />
             </a>
