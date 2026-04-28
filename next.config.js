@@ -10,7 +10,6 @@ try {
 }
 
 const nextConfig = {
-  output: 'export',
   images: {
     unoptimized: true, // Required for static export
     formats: ['image/webp'], // Prefer WebP format
