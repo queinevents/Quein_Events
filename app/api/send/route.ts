@@ -1,15 +1,16 @@
-// Simplified version - use this if the main route.js causes build errors
-// To use: rename this file to route.js and delete the old route.js
-
 import { Resend } from 'resend';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(request) {
+export async function POST(req: NextRequest) {
+  console.log('[Email API] Request received');
+  
   try {
-    const body = await request.json();
+    const body = await req.json();
     const { name, email, phone, eventType, eventDate, guestCount, hearAboutUs, message } = body;
+
+    console.log('[Email API] Processing submission from:', email);
 
     const { data, error } = await resend.emails.send({
       from: 'Quein Events <onboarding@resend.dev>',
@@ -87,19 +88,20 @@ export async function POST(request) {
     });
 
     if (error) {
-      console.error('Resend error:', error);
+      console.error('[Email API] Resend error:', error);
       return NextResponse.json(
         { error: 'Failed to send email', details: error.message },
         { status: 500 }
       );
     }
 
+    console.log('[Email API] Email sent successfully:', data?.id);
     return NextResponse.json(
       { success: true, messageId: data?.id },
       { status: 200 }
     );
-  } catch (error) {
-    console.error('API error:', error);
+  } catch (error: any) {
+    console.error('[Email API] Error:', error);
     return NextResponse.json(
       { error: 'Internal server error', details: error.message },
       { status: 500 }
