@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { name, email, phone, eventType, eventDate, guestCount, hearAboutUs, message } = body;
     const { data, error } = await resend.emails.send({
-      from: 'Quein Events <onboarding@resend.dev>',
+      from: 'Quein Events <noreply@queinevents.com>',
       to: [process.env.CONTACT_EMAIL || 'info@queinevents.com'],
       replyTo: email,
       subject: `New Contact Form Submission - ${eventType}`,
