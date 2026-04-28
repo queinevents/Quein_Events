@@ -2,17 +2,27 @@ import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-console.log("resend key",resend);
-console.log("conatact mail",process.env.CONTACT_EMAIL);
 
 export async function POST(request) {
+  // Log environment check (will appear in Vercel logs)
+  console.log('[Email API] Environment check:', {
+    hasApiKey: !!process.env.RESEND_API_KEY,
+    apiKeyPrefix: process.env.RESEND_API_KEY?.substring(0, 7),
+    contactEmail: process.env.CONTACT_EMAIL,
+    timestamp: new Date().toISOString()
+  });
+
   try {
     const body = await request.json();
     const { name, email, phone, eventType, eventDate, guestCount, hearAboutUs, message } = body;
 
+    console.log('[Email API] Processing submission from:', email);
+
     // Send email using Resend
+    // IMPORTANT: Using Resend's test domain - works immediately without verification
+    // To use your own domain, verify queinevents.com in Resend dashboard first
     const { data, error } = await resend.emails.send({
-      from: 'Quein Events Contact <noreply@queinevents.com>',
+      from: 'Quein Events <onboarding@resend.dev>',
       to: [process.env.CONTACT_EMAIL || 'info@queinevents.com'],
       replyTo: email,
       subject: `New Contact Form Submission - ${eventType}`,
@@ -199,22 +209,49 @@ export async function POST(request) {
     });
 
     if (error) {
-      console.error('Resend error:', error);
+      console.error('[Email API] Resend error:', {
+        error,
+        errorMessage: error.message,
+        errorName: error.name,
+        timestamp: new Date().toISOString()
+      });
       return NextResponse.json(
-        { error: 'Failed to send email', details: error },
+        { 
+          error: 'Failed to send email', 
+          details: error.message || error,
+          hint: 'Check Vercel logs for detailed error information'
+        },
         { status: 500 }
       );
     }
+
+    console.log('[Email API] Email sent successfully:', {
+      messageId: data?.id,
+      to: process.env.CONTACT_EMAIL,
+      timestamp: new Date().toISOString()
+    });
 
     return NextResponse.json(
       { success: true, messageId: data?.id },
       { status: 200 }
     );
   } catch (error) {
-    console.error('API error:', error);
+    console.error('[Email API] Unexpected error:', {
+      error: error.message,
+      stack: error.stack,
+      timestamp: new Date().toISOString()
+    });
     return NextResponse.json(
-      { error: 'Internal server error', details: error.message },
+      { 
+        error: 'Internal server error', 
+        details: error.message,
+        hint: 'Check Vercel function logs for more details'
+      },
       { status: 500 }
     );
   }
 }
+
+// Vercel runtime configuration
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
